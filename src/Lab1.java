@@ -20,7 +20,7 @@ public class Lab1 {
                 e.printStackTrace();
             }*/
 //            throw new RuntimeException("!!!");
-//            return;
+            return;
         }
 
         for (char i = (char)a; i <= n; i++) {
