@@ -1,5 +1,8 @@
+import lab4.Student;
+
 public class Lab1 {
     public static void main(String[] args) /*throws Exception*/ {
+
         double S = 0;
         int a = 1;
         int n = 2;

@@ -1,6 +1,29 @@
 public class Lab3 {
+
+    /**
+     * My super method main!!!
+     *
+     * @param args my params
+     */
     public static void main(String[] args) {
-        String s = "";
+        StringBuffer stringBuffer = new StringBuffer("asd");
+//        stringBuffer.
+        /*StringBuffer stringBuffer2 = new StringBuffer("asd");
+        System.out.println(
+                new StringBuffer(stringBuffer.substring(1, 2))
+                        .equals(
+                                new StringBuffer(stringBuffer2.substring(1, 2).toLowerCase())
+                        )
+        );
+        System.out.println(
+                stringBuffer.substring(1, 2)
+                        .equals(
+                                stringBuffer2.substring(1, 2).toLowerCase()
+                        )
+        );*/
+
+
+        /*String s = "";
         String s2 = "";
 //        String s = new String("");
 //        String s2 = new String("");
@@ -15,7 +38,9 @@ public class Lab3 {
         for (int i = 0; i < 20; i++) {
             stringBuilder.append(i % 10);
         }
-        System.out.println(stringBuilder);
+        System.out.println(stringBuilder);*/
+
+
 
 
 
