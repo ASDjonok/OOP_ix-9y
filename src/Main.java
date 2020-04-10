@@ -1,3 +1,5 @@
+import lab4.Student;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -5,7 +7,7 @@ public class Main {
             System.out.println(i);
         }
 
-
+//        Student student = new Student();
         /*int a = 1;
         MyClass myObject = new MyClass();
         myObject.setA(1, "myPassword");*/
