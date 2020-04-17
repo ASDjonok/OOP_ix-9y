@@ -1,6 +1,6 @@
 package lab4;
 
-public class Student /*extends Object*/{
+public class Student implements Comparable/*extends Object*/{
     private byte course = 2;
     private String name = "Student";
     private String group;
@@ -56,6 +56,12 @@ public class Student /*extends Object*/{
 
     public String getFaculty() {
         return faculty;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        int surnameCompareResult = surname.compareTo(((Student) o).surname);
+        return surnameCompareResult != 0 ? surnameCompareResult : name.compareTo(((Student) o).name);
     }
 
     /*static void myStaticMethod() {
