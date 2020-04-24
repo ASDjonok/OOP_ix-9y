@@ -1,6 +1,7 @@
 package lab4;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,10 +32,33 @@ public class Main {
                         0, 600),
         };
 
+//        String[] studentss = {"A", "S"};
+
+//        System.out.println((int)'I');
+//        System.out.println((int)'A');
+
         System.out.println(students[0].compareTo(students[1]));
 
-        Arrays.sort(students);
+//        Arrays.sort(students);
+
+        SurnameComparator surnameComparator = new SurnameComparator();
+        Arrays.sort(students, surnameComparator);
+
+        System.out.println(surnameComparator.compare(students[0], students[1]));
+//        System.out.println(surnameComparator.compare(new CorrespondenceStudent(), new CorrespondenceStudent()));
+
+//        Arrays.sort(students, new NameComparator());
+        /*Arrays.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });*/
+//        Arrays.sort(students, (o1, o2) -> o1.getName().compareTo(o2.getName()));
+        Arrays.sort(students, Comparator.comparing(Student::getName));
+
         System.out.println();
+
 
         /*int[] array = {1, 3, 2};
         Arrays.sort(array);*/

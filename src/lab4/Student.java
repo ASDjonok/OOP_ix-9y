@@ -1,6 +1,6 @@
 package lab4;
 
-public class Student implements Comparable/*extends Object*/{
+public class Student implements Comparable<Student>/*extends Object*/ {
     private byte course = 2;
     private String name = "Student";
     private String group;
@@ -11,9 +11,11 @@ public class Student implements Comparable/*extends Object*/{
 
     private static Student instance /*= null*/;
 
-    /*private */public Student() {
+    /*private */
+    public Student() {
 //        System.out.println(1);
     }
+
     public Student(byte course) {
         this.course = course;
     }
@@ -59,9 +61,17 @@ public class Student implements Comparable/*extends Object*/{
     }
 
     @Override
-    public int compareTo(Object o) {
-        int surnameCompareResult = surname.compareTo(((Student) o).surname);
-        return surnameCompareResult != 0 ? surnameCompareResult : name.compareTo(((Student) o).name);
+    public int compareTo(Student student) {
+        int surnameCompareResult = surname.compareTo(student.surname);
+        return surnameCompareResult != 0 ? surnameCompareResult : -name.compareTo(student.name);
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getName() {
+        return name;
     }
 
     /*static void myStaticMethod() {
