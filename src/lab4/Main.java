@@ -24,9 +24,9 @@ public class Main {
         students[2] = new Student();*/
 
         Student[] students = {
-                new Student((byte) 1, "Oleksii", "IO-61", "Aleshchenko", "FICT",
-                        0, 600),
                 new Student((byte) 2, "Oleg", "IO-62", "Ivanov", "FICT",
+                        0, 600),
+                new Student((byte) 1, "Oleksii", "IO-61", "Aleshchenko", "FICT",
                         0, 600),
                 new Student((byte) 3, "Ganna", "IV-61", "Aleshchenko", "FICT",
                         0, 600),
@@ -42,7 +42,7 @@ public class Main {
 //        Arrays.sort(students);
 
         SurnameComparator surnameComparator = new SurnameComparator();
-        Arrays.sort(students, surnameComparator);
+//        Arrays.sort(students, surnameComparator);
 
         System.out.println(surnameComparator.compare(students[0], students[1]));
 //        System.out.println(surnameComparator.compare(new CorrespondenceStudent(), new CorrespondenceStudent()));
@@ -55,7 +55,7 @@ public class Main {
             }
         });*/
 //        Arrays.sort(students, (o1, o2) -> o1.getName().compareTo(o2.getName()));
-        Arrays.sort(students, Comparator.comparing(Student::getName));
+        Arrays.sort(students, Comparator.comparing(Student::getSurname).thenComparing(Student::getName).reversed());
 
         System.out.println();
 
