@@ -1,15 +1,15 @@
 package lab5;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 public class Sentence {
-//    todo fix type Object
-    private Object[] sentenceElements;
+    private SentenceElement[] sentenceElements;
 
-    public Sentence(Object[] sentenceElements) {
+    public Sentence(SentenceElement[] sentenceElements) {
         this.sentenceElements = sentenceElements;
     }
+
+    /*public Sentence(Word[] words, Punctuation[] punctuations) {
+        this.sentenceElements = sentenceElements;
+    }*/
 
     @Override
     public String toString() {
@@ -17,9 +17,25 @@ public class Sentence {
         for (int i = 0; i < sentenceElements.length; i++) {
             sentenceString.append(
                     (i != 0 && sentenceElements[i] instanceof Word ? " " : "") +
-                    sentenceElements[i].toString()
+                            sentenceElements[i].toString()
             );
         }
         return sentenceString.toString();
+    }
+
+    public int findWordEntrancesQuantity(String wordString) {
+        int wordEntrancesQuantity = 0;
+
+        for (SentenceElement sentenceElement : sentenceElements) {
+            if (sentenceElement instanceof Word) {
+//                if (sentenceElement.toString().equals(wordString)) {
+                Word word = (Word) sentenceElement;
+                if (word.equalsString(wordString)) {
+                    wordEntrancesQuantity++;
+                }
+            }
+        }
+
+        return wordEntrancesQuantity;
     }
 }

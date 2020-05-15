@@ -1,6 +1,6 @@
 package lab5;
 
-public class Punctuation {
+public class Punctuation extends SentenceElement {
     private String symbols;
 
 

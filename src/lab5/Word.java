@@ -2,7 +2,7 @@ package lab5;
 
 import java.util.Arrays;
 
-public class Word {
+public class Word extends SentenceElement {
     private Letter[] letters;
 
     public Word(Letter[] letters) {
@@ -16,5 +16,9 @@ public class Word {
             wordString.append(letter.toString());
         }
         return wordString.toString();
+    }
+
+    public boolean equalsString(String wordString) {
+        return toString().equals(wordString);
     }
 }

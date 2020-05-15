@@ -36,14 +36,40 @@ public class Main {
         Punctuation punctuation = new Punctuation(",");
         Punctuation punctuation2 = new Punctuation("!");
 
-        Sentence sentence = new Sentence(new Object[]{
+        Sentence sentence = new Sentence(new SentenceElement[]{
                 word,
                 punctuation,
                 word2,
                 punctuation2,
         });
 
+        Word word3 = new Word(new Letter[]{
+                new Letter('O'),
+                new Letter('l'),
+                new Letter('e'),
+                new Letter('k'),
+                new Letter('s'),
+                new Letter('i'),
+                new Letter('i'),
+        });
+
+        Sentence sentence2 = new Sentence(new SentenceElement[]{
+                word,
+                punctuation,
+                word3,
+                punctuation2,
+        });
+
         System.out.println(sentence);
+        System.out.println(sentence2);
+
+        Text text = new Text(new Sentence[]{sentence, sentence2});
+
+        System.out.println(text);
+
+//        !!! CLIENT IS ALIVE
+        Client client = new Client(text);
+        client.startLiveInTheSystem();
 
         System.out.println("Done! :)");
     }
