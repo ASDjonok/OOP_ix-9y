@@ -1,7 +1,23 @@
 package lab5;
 
 public class Main {
+
+    private static void myMethod() {
+        System.out.println("In myMethod()");
+    }
+
+    private static void myMethod(int a) {
+        System.out.println("In myMethod(int a = " + a + ")");
+    }
+
     public static void main(String[] args) {
+        Text text2 = new Text("Hello, world. Hello, Oleksii!");
+        System.out.println(text2);
+        Client client = new Client(text2);
+        client.startLiveInTheSystem();
+
+        /*myMethod(1);
+        myMethod();
 
         Letter letter = new Letter('a');
 
@@ -63,13 +79,10 @@ public class Main {
         System.out.println(sentence);
         System.out.println(sentence2);
 
-        Text text = new Text(new Sentence[]{sentence, sentence2});
+        Text text = new Text(new Sentence[]{sentence, sentence2});*/
+//        Text text2 = new Text("Hello, world. Hello, Oleksii.");
 
-        System.out.println(text);
-
-//        !!! CLIENT IS ALIVE
-        Client client = new Client(text);
-        client.startLiveInTheSystem();
+//        System.out.println(text);
 
         System.out.println("Done! :)");
     }

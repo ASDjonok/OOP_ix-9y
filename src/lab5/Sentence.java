@@ -1,10 +1,24 @@
 package lab5;
 
 public class Sentence {
+    private static final String punctuationSymbols = ",.!?;";
     private SentenceElement[] sentenceElements;
 
     public Sentence(SentenceElement[] sentenceElements) {
         this.sentenceElements = sentenceElements;
+    }
+
+    public Sentence(String sentenceString) {
+        String[] sentenceElementsStrings = sentenceString.split("(?=[" + punctuationSymbols + "])|\\s");
+        sentenceElements = new SentenceElement[sentenceElementsStrings.length];
+        String sentenceElementString;
+        for (int i = 0; i < sentenceElementsStrings.length; i++) {
+            sentenceElementString = sentenceElementsStrings[i];
+            sentenceElements[i] = punctuationSymbols.contains(sentenceElementString)
+                    ? new Punctuation(sentenceElementString)
+                    : new Word(sentenceElementString);
+
+        }
     }
 
     /*public Sentence(Word[] words, Punctuation[] punctuations) {

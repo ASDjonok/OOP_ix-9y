@@ -9,6 +9,14 @@ public class Word extends SentenceElement {
         this.letters = letters;
     }
 
+    public Word(String wordString) {
+        char[] lettersChars = wordString.toCharArray();
+        letters = new Letter[lettersChars.length];
+        for (int i = 0; i < lettersChars.length; i++) {
+            letters[i] = new Letter(lettersChars[i]);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder wordString = new StringBuilder();
