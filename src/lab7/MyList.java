@@ -4,42 +4,69 @@ import lab6.Flower;
 
 import java.util.*;
 
-public class MyList implements List<Flower> {
+public class MyList<E> implements List<Flower> {
+    private Node head;
+    private Node tail;
+    private int size;
 
     public MyList() {
-        //todo check
     }
 
     public MyList(Flower flower) {
-        // add flower to collection
-        // todo check
         add(flower);
     }
 
-    public MyList(Collection collection) {
-        // add collection's elements to this collection
-        //todo check
+    public MyList(Collection<? extends Flower> collection) {
         addAll(collection);
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
+    // todo fix
     @Override
     public boolean contains(Object o) {
+        for (Flower flower : this) {
+            if (flower.equals(o)) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public Iterator<Flower> iterator() {
-        return null;
+        return new MyIterator();
+    }
+
+    class MyIterator implements Iterator<Flower> {
+        protected Node currentNode = head;
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != null;
+        }
+
+        @Override
+        public Flower next() {
+            /*if (!hasNext()) {
+                throw new NoSuchElementException();
+            }*/
+            try {
+                Flower flower = currentNode.getFlower();
+                currentNode = currentNode.getNext();
+                return flower;
+            } catch (NullPointerException e) {
+                throw new NoSuchElementException();
+            }
+        }
     }
 
     @Override
@@ -54,7 +81,15 @@ public class MyList implements List<Flower> {
 
     @Override
     public boolean add(Flower flower) {
-        return false;
+        Node node = new Node(flower, null, tail);
+        if (head == null) {
+            head = node;
+        } else {
+            tail.setNext(node);
+        }
+        tail = node;
+        size++;
+        return true;
     }
 
     @Override
@@ -69,7 +104,11 @@ public class MyList implements List<Flower> {
 
     @Override
     public boolean addAll(Collection<? extends Flower> c) {
-        return false;
+        boolean isCollectionChanged = false;
+        for (Flower flower : c) {
+            isCollectionChanged |= add(flower);
+        }
+        return isCollectionChanged;
     }
 
     @Override
@@ -124,7 +163,57 @@ public class MyList implements List<Flower> {
 
     @Override
     public ListIterator<Flower> listIterator() {
-        return null;
+        return new MyListIterator();
+    }
+
+    class MyListIterator extends MyIterator implements ListIterator<Flower> {
+        /*private Node currentNode = head;
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public Flower next() {
+            return null;
+        }*/
+
+        @Override
+        public boolean hasPrevious() {
+            return currentNode.getPrevious() != null;
+        }
+
+        @Override
+        public Flower previous() {
+            currentNode = currentNode.getPrevious();
+            return currentNode.getFlower();
+        }
+
+        @Override
+        public int nextIndex() {
+            return 0;
+        }
+
+        @Override
+        public int previousIndex() {
+            return 0;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public void set(Flower flower) {
+
+        }
+
+        @Override
+        public void add(Flower flower) {
+
+        }
+
     }
 
     @Override

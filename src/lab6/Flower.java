@@ -1,5 +1,7 @@
 package lab6;
 
+import java.util.Objects;
+
 public class Flower extends BouquetComponent {
     private int freshness;
 
@@ -18,5 +20,20 @@ public class Flower extends BouquetComponent {
                 "class=" + /*this.*/getClass().getSimpleName() +
                 ", freshness=" + freshness +
                 '}';
+    }
+
+    // todo fix price
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flower flower = (Flower) o;
+        return freshness == flower.freshness;
+    }
+
+    // todo read by your self:)
+    @Override
+    public int hashCode() {
+        return Objects.hash(freshness);
     }
 }
